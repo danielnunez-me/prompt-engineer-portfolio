@@ -1,16 +1,21 @@
+import { AiModels } from '@/components/ai-models'
+import { ProfilePanel } from '@/components/profile-panel'
+import { Projects } from '@/components/projects'
+import { Skills } from '@/components/skills'
+import { Stats } from '@/components/stats'
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-16 text-center sm:items-start sm:text-left">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            v0-portfolio-prompt-enginnier
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            To get started, send a prompt or modify this page directly.
-          </p>
+    <main className="mx-auto flex min-h-svh w-full max-w-[1400px] flex-col justify-center px-5 py-8 lg:h-svh lg:overflow-hidden lg:px-10 lg:py-0">
+      <div className="grid gap-10 lg:h-full lg:grid-cols-[35%_1fr] lg:items-center lg:gap-12">
+        <ProfilePanel />
+        <div className="flex flex-col gap-5">
+          <Stats />
+          <AiModels />
+          <Skills />
+          <Projects />
         </div>
-      </main>
-    </div>
-  );
+      </div>
+    </main>
+  )
 }
