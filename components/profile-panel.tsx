@@ -3,17 +3,42 @@
 import { motion } from 'framer-motion'
 import { Mail } from 'lucide-react'
 import Image from 'next/image'
-import { GithubIcon, LinkedinIcon, XIcon } from '@/components/brand-icons'
-import { Button } from '@/components/ui/button'
+import { useEffect, useState } from 'react'
+import {
+  GithubIcon,
+  LinkedinIcon,
+  WhatsappIcon,
+  XIcon,
+} from '@/components/brand-icons'
+
+const descriptions = [
+  'I turn language models into reliable, production-ready products.',
+  'Designing prompts and AI agents that ship real value.',
+  'Building multi-agent systems with precise context engineering.',
+  'Crafting AI automations that scale from idea to production.',
+  'Engineering prompts that make LLMs predictable and useful.',
+  'Orchestrating AI agents to solve complex workflows.',
+  'From raw model to refined product: prompt-driven development.',
+  'Context engineering and agent design for modern AI stacks.',
+]
 
 const socials = [
   { icon: GithubIcon, label: 'GitHub', href: 'https://github.com' },
   { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://linkedin.com' },
   { icon: XIcon, label: 'X', href: 'https://x.com' },
   { icon: Mail, label: 'Email', href: 'mailto:hello@example.com' },
+  { icon: WhatsappIcon, label: 'WhatsApp', href: 'https://wa.me/1234567890' },
 ]
 
 export function ProfilePanel() {
+  const [description, setDescription] = useState(descriptions[0])
+
+  useEffect(() => {
+    setDescription(
+      descriptions[Math.floor(Math.random() * descriptions.length)],
+    )
+  }, [])
+
   return (
     <motion.aside
       initial={{ opacity: 0, y: 12 }}
@@ -37,10 +62,8 @@ export function ProfilePanel() {
         <p className="font-mono text-sm text-primary">Prompt Engineer</p>
       </div>
 
-      <p className="max-w-xs text-sm leading-relaxed text-muted-foreground text-pretty">
-        I design prompts, AI agents, and automation systems that turn language
-        models into reliable products. Focused on multi-agent orchestration and
-        context engineering.
+      <p className="max-w-xs min-h-10 text-sm leading-relaxed text-muted-foreground text-pretty">
+        {description}
       </p>
 
       <div className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5">
@@ -51,20 +74,19 @@ export function ProfilePanel() {
         <span className="text-xs text-foreground">Available for projects</span>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex items-center gap-4">
         {socials.map(({ icon: Icon, label, href }) => (
-          <Button
+          <a
             key={label}
-            variant="outline"
-            size="sm"
-            asChild
-            className="gap-2 bg-transparent"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            className="text-muted-foreground transition-all duration-200 hover:scale-110 hover:text-primary"
           >
-            <a href={href} target="_blank" rel="noopener noreferrer">
-              <Icon className="size-4" aria-hidden="true" />
-              {label}
-            </a>
-          </Button>
+            <Icon className="size-5" aria-hidden="true" />
+            <span className="sr-only">{label}</span>
+          </a>
         ))}
       </div>
     </motion.aside>
