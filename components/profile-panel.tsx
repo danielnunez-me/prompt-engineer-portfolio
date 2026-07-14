@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Mail } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -40,12 +39,7 @@ export function ProfilePanel() {
   }, [])
 
   return (
-    <motion.aside
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="flex flex-col items-start gap-5 lg:sticky lg:top-0 lg:h-full lg:justify-center"
-    >
+    <aside className="rise-in flex flex-col items-start gap-5 lg:sticky lg:top-0 lg:h-full lg:justify-center">
       <Image
         src="/images/avatar.png"
         alt="Portrait of Alex Rivera"
@@ -89,6 +83,6 @@ export function ProfilePanel() {
           </a>
         ))}
       </div>
-    </motion.aside>
+    </aside>
   )
 }

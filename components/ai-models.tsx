@@ -1,6 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { Bot, Brain, Cpu, Flame, Layers, Orbit, Sparkles, Zap } from 'lucide-react'
 
 const models = [
@@ -25,12 +22,10 @@ export function AiModels() {
       </h2>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {models.map(({ icon: Icon, name, level, status }, i) => (
-          <motion.div
+          <div
             key={name}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 + i * 0.04, ease: 'easeOut' }}
-            className="flex flex-col gap-2 rounded-lg border border-border bg-card p-3"
+            className="rise-in flex flex-col gap-2 rounded-lg border border-border bg-card p-3"
+            style={{ '--rise-delay': `${0.1 + i * 0.04}s` } as React.CSSProperties}
           >
             <div className="flex items-center justify-between">
               <Icon className="size-4 text-muted-foreground" aria-hidden="true" />
@@ -63,7 +58,7 @@ export function AiModels() {
                 style={{ width: `${level}%` }}
               />
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

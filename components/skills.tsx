@@ -1,6 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
 
 const skills = [
@@ -35,11 +32,9 @@ export function Skills() {
       >
         Skills
       </h2>
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.3, ease: 'easeOut' }}
-        className="flex flex-wrap gap-1.5"
+      <div
+        className="rise-in flex flex-wrap gap-1.5"
+        style={{ '--rise-delay': '0.3s' } as React.CSSProperties}
       >
         {skills.map((skill) => (
           <Badge
@@ -50,7 +45,7 @@ export function Skills() {
             {skill}
           </Badge>
         ))}
-      </motion.div>
+      </div>
     </section>
   )
 }

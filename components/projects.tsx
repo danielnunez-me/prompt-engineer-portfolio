@@ -1,6 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 
@@ -39,12 +36,10 @@ export function Projects() {
       </h2>
       <div className="grid gap-2 sm:grid-cols-3">
         {projects.map(({ name, description, tech, models }, i) => (
-          <motion.article
+          <article
             key={name}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.4 + i * 0.06, ease: 'easeOut' }}
-            className="group flex flex-col gap-2 rounded-lg border border-border bg-card p-3 transition-colors hover:border-primary/40"
+            className="rise-in group flex flex-col gap-2 rounded-lg border border-border bg-card p-3 transition-colors hover:border-primary/40"
+            style={{ '--rise-delay': `${0.4 + i * 0.06}s` } as React.CSSProperties}
           >
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-medium">{name}</h3>
@@ -76,7 +71,7 @@ export function Projects() {
                 </Badge>
               ))}
             </div>
-          </motion.article>
+          </article>
         ))}
       </div>
     </section>
