@@ -42,7 +42,7 @@ export function ProfilePanel() {
     <aside className="rise-in flex flex-col items-start gap-5 lg:sticky lg:top-0 lg:h-full lg:justify-center">
       <Image
         src="/images/avatar.png"
-        alt="Portrait of Alex Rivera"
+        alt="Portrait of Daniel E. Nuñez Mejia"
         width={96}
         height={96}
         priority
@@ -51,7 +51,7 @@ export function ProfilePanel() {
 
       <div className="flex flex-col gap-1.5">
         <h1 className="text-2xl font-semibold tracking-tight text-balance lg:text-3xl">
-          Alex Rivera
+          Daniel E. Nuñez Mejia
         </h1>
         <p className="font-mono text-sm text-primary">Prompt Engineer</p>
       </div>
