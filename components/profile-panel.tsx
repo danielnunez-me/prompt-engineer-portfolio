@@ -9,40 +9,44 @@ import {
   WhatsappIcon,
   XIcon,
 } from '@/components/brand-icons'
+import { EditableText } from '@/components/editor/editor-mode'
+import { useContent } from '@/components/providers/content-provider'
+import type { SocialLink } from '@/lib/content'
 
-const descriptions = [
-  'I turn language models into reliable, production-ready products.',
-  'Designing prompts and AI agents that ship real value.',
-  'Building multi-agent systems with precise context engineering.',
-  'Crafting AI automations that scale from idea to production.',
-  'Engineering prompts that make LLMs predictable and useful.',
-  'Orchestrating AI agents to solve complex workflows.',
-  'From raw model to refined product: prompt-driven development.',
-  'Context engineering and agent design for modern AI stacks.',
-]
+const SOCIAL_ICONS = {
+  github: GithubIcon,
+  linkedin: LinkedinIcon,
+  x: XIcon,
+  email: Mail,
+  whatsapp: WhatsappIcon,
+} as const
 
-const socials = [
-  { icon: GithubIcon, label: 'GitHub', href: 'https://github.com/danielnunez-me' },
-  { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/danielnunez-me/' },
-  { icon: XIcon, label: 'X', href: 'https://x.com/danielnunez_me' },
-  { icon: Mail, label: 'Email', href: 'mailto:hola@danielnunez.me' },
-  { icon: WhatsappIcon, label: 'WhatsApp', href: 'https://wa.me/18292809250' },
-]
+function SocialIcon({ social }: { social: SocialLink }) {
+  const Icon = SOCIAL_ICONS[social.iconKey] ?? Mail
+  return <Icon className="size-5" aria-hidden="true" />
+}
 
 export function ProfilePanel() {
-  const [description, setDescription] = useState(descriptions[0])
+  const { content } = useContent()
+  const { profile } = content
+  const [description, setDescription] = useState(
+    profile.descriptions[0] ?? '',
+  )
 
   useEffect(() => {
+    if (profile.descriptions.length === 0) return
     setDescription(
-      descriptions[Math.floor(Math.random() * descriptions.length)],
+      profile.descriptions[
+        Math.floor(Math.random() * profile.descriptions.length)
+      ],
     )
-  }, [])
+  }, [profile.descriptions])
 
   return (
     <aside className="rise-in flex flex-col items-start gap-5 lg:sticky lg:top-0 lg:h-full lg:justify-center">
       <Image
-        src="/images/avatar.png"
-        alt="Portrait of Daniel E. Nuñez Mejia"
+        src={profile.avatarUrl}
+        alt={`Portrait of ${profile.name}`}
         width={96}
         height={96}
         priority
@@ -51,9 +55,11 @@ export function ProfilePanel() {
 
       <div className="flex flex-col gap-1.5">
         <h1 className="text-2xl font-semibold tracking-tight text-balance lg:text-3xl">
-          Daniel E. Nuñez Mejia
+          <EditableText path="profile.name" value={profile.name} />
         </h1>
-        <p className="font-mono text-sm text-primary">Prompt Engineer</p>
+        <p className="font-mono text-sm text-primary">
+          <EditableText path="profile.role" value={profile.role} />
+        </p>
       </div>
 
       <p className="max-w-xs min-h-10 text-sm leading-relaxed text-muted-foreground text-pretty">
@@ -65,21 +71,26 @@ export function ProfilePanel() {
           <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-60" />
           <span className="relative inline-flex size-2 rounded-full bg-primary" />
         </span>
-        <span className="text-xs text-foreground">Available for projects</span>
+        <span className="text-xs text-foreground">
+          <EditableText
+            path="profile.availabilityLabel"
+            value={profile.availabilityLabel}
+          />
+        </span>
       </div>
 
       <div className="flex items-center gap-4">
-        {socials.map(({ icon: Icon, label, href }) => (
+        {profile.socials.map((social) => (
           <a
-            key={label}
-            href={href}
+            key={social.id}
+            href={social.href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={label}
+            aria-label={social.label}
             className="text-muted-foreground transition-all duration-200 hover:scale-110 hover:text-primary"
           >
-            <Icon className="size-5" aria-hidden="true" />
-            <span className="sr-only">{label}</span>
+            <SocialIcon social={social} />
+            <span className="sr-only">{social.label}</span>
           </a>
         ))}
       </div>
