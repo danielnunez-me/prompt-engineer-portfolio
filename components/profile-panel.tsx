@@ -22,11 +22,11 @@ const descriptions = [
 ]
 
 const socials = [
-  { icon: GithubIcon, label: 'GitHub', href: 'https://github.com' },
-  { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://linkedin.com' },
-  { icon: XIcon, label: 'X', href: 'https://x.com' },
-  { icon: Mail, label: 'Email', href: 'mailto:hello@example.com' },
-  { icon: WhatsappIcon, label: 'WhatsApp', href: 'https://wa.me/1234567890' },
+  { icon: GithubIcon, label: 'GitHub', href: 'https://github.com/danielnunez-me' },
+  { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/danielnunez-me/' },
+  { icon: XIcon, label: 'X', href: 'https://x.com/danielnunez_me' },
+  { icon: Mail, label: 'Email', href: 'mailto:hola@danielnunez.me' },
+  { icon: WhatsappIcon, label: 'WhatsApp', href: 'https://wa.me/18292809250' },
 ]
 
 export function ProfilePanel() {
