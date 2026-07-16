@@ -1,42 +1,26 @@
-import { Badge } from '@/components/ui/badge'
+'use client'
 
-const skills = [
-  'Prompt Engineering',
-  'AI Agents',
-  'Multi-Agent Systems',
-  'MCP',
-  'RAG',
-  'Function Calling',
-  'Tool Calling',
-  'Structured Outputs',
-  'Context Engineering',
-  'AI Automation',
-  'Workflow Design',
-  'LangGraph',
-  'OpenAI SDK',
-  'Claude SDK',
-  'Python',
-  'TypeScript',
-  'Node.js',
-  'Cursor',
-  'v0',
-  'Windsurf',
-]
+import { Badge } from '@/components/ui/badge'
+import { EditableText } from '@/components/editor/editor-mode'
+import { useContent } from '@/components/providers/content-provider'
 
 export function Skills() {
+  const { content } = useContent()
+  const { skills } = content
+
   return (
     <section aria-labelledby="skills-heading" className="flex flex-col gap-2.5">
       <h2
         id="skills-heading"
         className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
       >
-        Skills
+        <EditableText path="skills.heading" value={skills.heading} />
       </h2>
       <div
         className="rise-in flex flex-wrap gap-1.5"
         style={{ '--rise-delay': '0.3s' } as React.CSSProperties}
       >
-        {skills.map((skill) => (
+        {skills.items.map((skill) => (
           <Badge
             key={skill}
             variant="secondary"

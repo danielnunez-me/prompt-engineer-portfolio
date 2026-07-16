@@ -1,0 +1,160 @@
+import type { PageContent } from './schema'
+
+/** Canonical Spanish source of truth for CMS seed / fallback. */
+export const defaultPageContent: PageContent = {
+  seo: {
+    title: 'Prompt Engineer — Agentes IA y Automatización',
+    description:
+      'Portfolio de un Prompt Engineer especializado en Agentes IA, Sistemas Multi-Agente y Automatización con IA.',
+    openGraphTitle: 'Prompt Engineer — Agentes IA y Automatización',
+    openGraphDescription:
+      'Portfolio de un Prompt Engineer especializado en Agentes IA, Sistemas Multi-Agente y Automatización con IA.',
+    openGraphSiteName: 'Daniel E. Nuñez Mejia',
+  },
+  profile: {
+    name: 'Daniel E. Nuñez Mejia',
+    role: 'Prompt Engineer',
+    avatarUrl: '/images/avatar.png',
+    availabilityLabel: 'Disponible para proyectos',
+    descriptions: [
+      'Transformo modelos de lenguaje en productos confiables listos para producción.',
+      'Diseño prompts y agentes de IA que aportan valor real.',
+      'Construyo sistemas multi-agente con ingeniería de contexto precisa.',
+      'Creo automatizaciones de IA que escalan de la idea a producción.',
+      'Ingeniero prompts que hacen a los LLM predecibles y útiles.',
+      'Orquesto agentes de IA para resolver flujos de trabajo complejos.',
+      'Del modelo crudo al producto refinado: desarrollo impulsado por prompts.',
+      'Ingeniería de contexto y diseño de agentes para stacks de IA modernos.',
+    ],
+    socials: [
+      {
+        id: 'github',
+        label: 'GitHub',
+        href: 'https://github.com/danielnunez-me',
+        iconKey: 'github',
+      },
+      {
+        id: 'linkedin',
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/danielnunez-me/',
+        iconKey: 'linkedin',
+      },
+      {
+        id: 'x',
+        label: 'X',
+        href: 'https://x.com/danielnunez_me',
+        iconKey: 'x',
+      },
+      {
+        id: 'email',
+        label: 'Email',
+        href: 'mailto:hola@danielnunez.me',
+        iconKey: 'email',
+      },
+      {
+        id: 'whatsapp',
+        label: 'WhatsApp',
+        href: 'https://wa.me/18292809250',
+        iconKey: 'whatsapp',
+      },
+    ],
+  },
+  stats: {
+    items: [
+      { id: 'models', value: '10+', label: 'Modelos IA' },
+      { id: 'agents', value: '50+', label: 'Agentes Creados' },
+      { id: 'automations', value: '100+', label: 'Automatizaciones' },
+      { id: 'years', value: '3+', label: 'Años de Experiencia' },
+    ],
+  },
+  models: {
+    heading: 'Modelos IA',
+    items: [
+      {
+        id: 'gpt',
+        name: 'GPT-5.5',
+        level: 95,
+        status: 'Production',
+        iconKey: 'sparkles',
+      },
+      {
+        id: 'claude',
+        name: 'Claude',
+        level: 92,
+        status: 'Production',
+        iconKey: 'brain',
+      },
+      {
+        id: 'gemini',
+        name: 'Gemini',
+        level: 88,
+        status: 'Production',
+        iconKey: 'orbit',
+      },
+      {
+        id: 'grok',
+        name: 'Grok',
+        level: 80,
+        status: 'Production',
+        iconKey: 'zap',
+      },
+      {
+        id: 'deepseek',
+        name: 'DeepSeek',
+        level: 78,
+        status: 'Experimental',
+        iconKey: 'cpu',
+      },
+      {
+        id: 'qwen',
+        name: 'Qwen',
+        level: 72,
+        status: 'Experimental',
+        iconKey: 'layers',
+      },
+      {
+        id: 'llama',
+        name: 'Llama',
+        level: 85,
+        status: 'Production',
+        iconKey: 'bot',
+      },
+      {
+        id: 'mistral',
+        name: 'Mistral',
+        level: 75,
+        status: 'Experimental',
+        iconKey: 'flame',
+      },
+    ],
+  },
+  skills: {
+    heading: 'Habilidades',
+    items: [
+      'Prompt Engineering',
+      'AI Agents',
+      'Multi-Agent Systems',
+      'MCP',
+      'RAG',
+      'Function Calling',
+      'Tool Calling',
+      'Structured Outputs',
+      'Context Engineering',
+      'AI Automation',
+      'Workflow Design',
+      'LangGraph',
+      'OpenAI SDK',
+      'Claude SDK',
+      'Python',
+      'TypeScript',
+      'Node.js',
+      'Cursor',
+      'v0',
+      'Windsurf',
+    ],
+  },
+  projects: {
+    heading: 'Proyectos Destacados',
+  },
+  mediaLibrary: [],
+}
