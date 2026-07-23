@@ -2,9 +2,12 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { headers } from 'next/headers'
+import Script from 'next/script'
 import './globals.css'
 import { getLocalizedPageContent, getPageContent } from '@/lib/cms'
 import { DEFAULT_LOCALE, LOCALE_HEADER } from '@/lib/i18n'
+
+const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
 
 const _geistSans = Geist({ subsets: ['latin'] })
 const _geistMono = Geist_Mono({ subsets: ['latin'] })
@@ -71,6 +74,22 @@ export default async function RootLayout({
     <html lang={locale} className="dark bg-background">
       <body className="font-sans antialiased">
         {children}
+        {googleAdsId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-ads" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${googleAdsId}');
+              `}
+            </Script>
+          </>
+        ) : null}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
